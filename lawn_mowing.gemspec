@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   end
 
   # spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  s.files       = ["lib/lawn_mowing.rb", "lib/mower.rb"]
+  spec.files       = ["lib/lawn_mowing.rb", "lib/mower.rb"]
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]

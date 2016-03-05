@@ -85,3 +85,10 @@ Please advise me over the weekend once you have completed this.
     To use a GEM
         use: require "lawn_mowing"
               Method....
+
+Git
+      git init
+      git add . 
+      git commit xxxxx
+      git remote add origin https://github.com/romalopes/lawn_mowing.git
+      git push https://github.com/romalopes/lawn_mowing.git --all
