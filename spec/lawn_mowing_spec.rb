@@ -103,6 +103,62 @@ describe LawnMowing::ManualMower do
 			expect(mower.index_movement).to eql(1)
 		end
 	end
+
+	describe "init and running system" do 
+		it "when passes a wrong file" do
+			result = LawnMowing::MowingSystem.init_run_system("NO FILE")
+			puts "\n\n\n----#{result}\n\n\n"
+			expect(result.include?("NO FILE doesn")).to eql(true)
+		end
+
+		it "when passes a file with wrong format" do
+			result = LawnMowing::MowingSystem.init_run_system("file_wrong_format.txt")
+			puts result
+			expect(result.include?("Not valid sequence.")).to eql(true)
+		end
+		
+		it "when passes a manual file" do 
+			mowing_system = LawnMowing::MowingSystem.init_run_system("manual_mowing.txt")
+			expect(mowing_system.lawn_x).to eql(5)
+			expect(mowing_system.lawn_y).to eql(5)
+
+			mower = mowing_system.mowers[0] 
+			expect(mower.x).to eql(1)
+			expect(mower.y).to eql(3)
+			expect(mower.direction).to eql("N")
+			expect(mower.moves).to eql(["L", "M", "L", "M", "L", "M", "L", "M", "M"])
+
+			mower = mowing_system.mowers[1] 
+			expect(mower.x).to eql(5)
+			expect(mower.y).to eql(1)
+			expect(mower.direction).to eql("E")
+			expect(mower.moves).to eql(["M", "M", "R", "M", "M", "R", "M", "R", "R", "M"])
+		end
+
+		it "when passes an automatic file" do 
+			mowing_system = LawnMowing::MowingSystem.init_run_system("automatic_mowing.txt")
+			expect(mowing_system.lawn_x).to eql(5)
+			expect(mowing_system.lawn_y).to eql(5)
+
+			mower = mowing_system.mowers[0] 
+			expect(mower.x).to eql(1)
+			expect(mower.y).to eql(0)
+			expect(mower.direction).to eql("S")
+			expect(mower.moves).to eql(["M", "M", "M", "M", "M", "R", "M", "R", "M", "M", "M", "M", "M"])
+
+			mower = mowing_system.mowers[1] 
+			expect(mower.x).to eql(3)
+			expect(mower.y).to eql(0)
+			expect(mower.direction).to eql("S")
+			expect(mower.moves).to eql(["M", "M", "M", "M", "M", "R", "M", "R", "M", "M", "M", "M", "M"])
+
+			mower = mowing_system.mowers[2] 
+			expect(mower.x).to eql(5)
+			expect(mower.y).to eql(0)
+			expect(mower.direction).to eql("S")
+			expect(mower.moves).to eql(["M", "M", "M", "M", "M", "R", "M", "R", "M", "M", "M", "M", "M"])
+		end
+	end
 end
 
 describe LawnMowing::ManualMowingSystem do 
@@ -141,7 +197,7 @@ describe LawnMowing::ManualMowingSystem do
 				file_name = LawnMowing::ManualMowingSystem::FILE_NAME + "wrong name"
 				result = LawnMowing::MowingSystem.read_file(file_name)
 				expect(result.class).to eql(String)
-				expect(result).to eql("File #{file_name} doesn't exist.")
+				expect(result.include?("anual_mowing.txtwrong name doesn't exist.")).to eql(true)
 			end
 		end
 	end
@@ -276,7 +332,6 @@ describe LawnMowing::ManualMowingSystem do
 			array_lines << "3 3 E"
 			array_lines << "MMRMMRMRRM"
 			manualMowingSystem = LawnMowing::ManualMowingSystem.init(array_lines)
-
 			manualMowingSystem.run_system
 			puts ""
 			manualMowingSystem.print_output
@@ -442,7 +497,7 @@ describe LawnMowing::AutomaticMowingSystem do
 				file_name = LawnMowing::AutomaticMowingSystem::FILE_NAME + "wrong name"
 				result = LawnMowing::MowingSystem.read_file(file_name)
 				expect(result.class).to eql(String)
-				expect(result).to eql("File #{file_name} doesn't exist.")
+				expect(result.include?("omatic_mowing.txtwrong name doesn't exist")).to eql(true)
 			end
 		end
 	end

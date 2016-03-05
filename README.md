@@ -94,3 +94,7 @@ Git
       git commit xxxxx
       git remote add origin https://github.com/romalopes/lawn_mowing.git
       git push https://github.com/romalopes/lawn_mowing.git --all
+
+To run the GEM
+        $ ruby -Ilib ./bin/lawn_mowing.rb "manual_mowing.txt"
+        $ ruby -Ilib ./bin/lawn_mowing.rb "automatic_mowing.txt"

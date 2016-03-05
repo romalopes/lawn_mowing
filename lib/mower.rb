@@ -16,6 +16,10 @@ module LawnMowing
   		@y = y.to_i 
   		@direction = direction
   		@index = nil
+  		@initial_x = @x 
+  		@initial_y = @y 
+  		@initial_direction = @direction
+
   	end
 
 	  def print_position_direction
@@ -30,6 +34,9 @@ module LawnMowing
   class ManualMower < Mower
   	attr_accessor :x_temp, :y_temp, :index_movement, :number_tries
 
+  	def self.test(arg)
+  		puts "\n\n\n\n ------ test #{arg}\n\n\n\n"
+  	end
   	def initialize(x, y, direction, moves = "")
   		super(x, y, direction)
   		@moves = moves.nil? ? [] : moves.split("")
@@ -125,7 +132,16 @@ module LawnMowing
 
 	  def print_output
 	  	print_position_direction
-	  	if !@index_movement.nil? && @index_movement < @moves.size
+	  end
+
+	  def print_input
+	  	puts "#{@initial_x} #{@initial_y} #{@initial_direction}"
+	  	puts "#{@moves.join("").chomp}"
+	  end
+
+	  def print_current_output
+	  	print_position_direction
+	  	if !@index_movement.nil? && @index_movement < @moves.size && @number_tries < 10
 	  		string = ""
 	  		(0..@index_movement-1).each do |space|
 	  			string << "_"

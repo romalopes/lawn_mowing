@@ -25,7 +25,11 @@ module LawnMowing
 	    if file_name.nil?
 	      file_name = LawnMowing::ManualMowingSystem::FILE_NAME
 	    end
+	    unless File.exist?(file_name)
+	    	file_name = Dir.getwd + "/" + file_name
+	    end
 	    if File.exist?(file_name)
+	    	puts "\n\n#{file_name}"
 	      # sheep_dog_bot = SheepdogBot.new(file_name)
 	      file = File.open(file_name)
 	      file.each {|line|
@@ -38,8 +42,33 @@ module LawnMowing
 	    return string_list
 	  end
 
-  	def init(array_lines)
-  		if array_lines.size == 3
+
+	  def self.init_run_system(file_or_array)
+	  	if !file_or_array.nil? 
+	  		if file_or_array.class == Array
+	  			array_lines = file_or_array
+	  		elsif file_or_array.class == String
+	  			array_lines = read_file(file_or_array)
+	  		end
+
+	  		if array_lines.class == Array
+	  			mowing_system = init(array_lines)
+	  			unless 	mowing_system.class == String
+	  				mowing_system.run_system
+	  				return mowing_system
+	  			else
+	  				puts "#{mowing_system}"
+	  				return mowing_system
+	  			end
+	  		else 
+	  			puts "#{array_lines} -> #{file_or_array}"
+	  			return "#{array_lines}"
+	  		end
+	  	end
+	  end
+
+  	def self.init(array_lines)
+  		if array_lines.size > 1 && array_lines.size % 2 == 1
   			return ManualMowingSystem.init(array_lines)
   		elsif array_lines.size == 1
   			return AutomaticMowingSystem.init(array_lines)
@@ -76,6 +105,10 @@ module LawnMowing
 					mower.do_action(self.lawn_mowers_positions)
 				end
   		end
+  		puts "\n\nInput"
+  		print_input
+  		puts "\nOutput"
+  		print_output
   	end
 
   	def print_values
@@ -140,9 +173,16 @@ module LawnMowing
   		return false
   	end
 
+  	def print_input 
+  		puts "#{@lawn_x} #{@lawn_y}"
+  		@mowers.each do |mower|
+  			mower.print_input
+  		end
+  	end
+
   	def print_output
   		@mowers.each do |mower|
-				mower.print_position_direction
+				mower.print_output
 			end
   	end
   end
@@ -186,7 +226,7 @@ module LawnMowing
   	def print_input 
   		puts "#{@lawn_x} #{lawn_y} #{@mowers.count}"
   	end
-  	
+
   	def print_output
   		@mowers.each do |mower|
 				mower.print_output
