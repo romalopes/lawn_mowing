@@ -364,19 +364,6 @@ describe LawnMowing::AutomaticMower do
 			expect(mower.moves).to eql(["M", "M", "L"])
 		end
 
-		it "can move" do 
-			mower_1 = LawnMowing::AutomaticMower.new(0)
-			mower_1.can_move?[[5,5], [0,0], [1,0] ])
-
-			mower_2 = LawnMowing::AutomaticMower.new(2)
-			mower_2.can_move?[[5,5], [0,0], [1,0] ])
-
-			mower_3 = LawnMowing::AutomaticMower.new(4)
-			mower_3.x = 
-			mower_2.can_move?[[5,5], [0,0], [1,0] ])
-
-		end
-
 		it "doing a movements" do
 			mower = LawnMowing::AutomaticMower.new(0)
 			expect(mower.x).to eql(0)
