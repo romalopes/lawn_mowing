@@ -1,0 +1,12 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.0.0
+
+# rake spec
+# script: rspec spec
+# script: 'bundle exec rake'
+
+# script: bundle exec rspec spec
+
+# To validate http://lint.travis-ci.org
