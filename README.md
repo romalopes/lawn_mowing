@@ -76,6 +76,8 @@ Please advise me over the weekend once you have completed this.
   create   .rspec
   create   spec/spec_helper.rb
 
+ Run rspec:
+   rspec spec
 - 
     To build a GEM
         $ gem build lawn_mowing.gemspec
