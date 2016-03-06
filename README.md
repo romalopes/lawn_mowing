@@ -98,3 +98,6 @@ Git
 To run the GEM
         $ ruby -Ilib ./bin/lawn_mowing.rb "manual_mowing.txt"
         $ ruby -Ilib ./bin/lawn_mowing.rb "automatic_mowing.txt"
+
+
+

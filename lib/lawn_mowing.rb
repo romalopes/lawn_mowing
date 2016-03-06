@@ -29,8 +29,6 @@ module LawnMowing
 	    	file_name = Dir.getwd + "/" + file_name
 	    end
 	    if File.exist?(file_name)
-	    	puts "\n\n#{file_name}"
-	      # sheep_dog_bot = SheepdogBot.new(file_name)
 	      file = File.open(file_name)
 	      file.each {|line|
 	      	string_list << line.chomp unless line.chomp.empty?
@@ -61,7 +59,7 @@ module LawnMowing
 	  				return mowing_system
 	  			end
 	  		else 
-	  			puts "#{array_lines} -> #{file_or_array}"
+	  			puts "#{array_lines} "
 	  			return "#{array_lines}"
 	  		end
 	  	end
@@ -94,7 +92,7 @@ module LawnMowing
   		positions = []
   		positions << [@lawn_x, @lawn_y]
   		@mowers.each do |mower| 
-  			positions << [mower.x, mower.y]
+        positions << [mower.x, mower.y, mower.direction, mower.moves_string]
   		end
   		return positions
   	end

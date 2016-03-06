@@ -107,13 +107,11 @@ describe LawnMowing::ManualMower do
 	describe "init and running system" do 
 		it "when passes a wrong file" do
 			result = LawnMowing::MowingSystem.init_run_system("NO FILE")
-			puts "\n\n\n----#{result}\n\n\n"
 			expect(result.include?("NO FILE doesn")).to eql(true)
 		end
 
 		it "when passes a file with wrong format" do
 			result = LawnMowing::MowingSystem.init_run_system("file_wrong_format.txt")
-			puts result
 			expect(result.include?("Not valid sequence.")).to eql(true)
 		end
 		
@@ -297,7 +295,7 @@ describe LawnMowing::ManualMowingSystem do
 			@mowing_system.add_mower(LawnMowing::ManualMower.new(2,4, "N", "LMLMLM"))
 			@mowing_system.add_mower(LawnMowing::ManualMower.new(1,1, "N", "LMLMLM"))
 			lawn_mowers_positions = @mowing_system.lawn_mowers_positions
-			expect(lawn_mowers_positions).to eql([[5, 5], [2, 4], [1, 1]])
+			expect(lawn_mowers_positions).to eql([[5, 5], [2, 4, "N", "LMLMLM"], [1, 1, "N", "LMLMLM"]])
 		end
 	end
 
@@ -333,8 +331,6 @@ describe LawnMowing::ManualMowingSystem do
 			array_lines << "MMRMMRMRRM"
 			manualMowingSystem = LawnMowing::ManualMowingSystem.init(array_lines)
 			manualMowingSystem.run_system
-			puts ""
-			manualMowingSystem.print_output
 			expect(manualMowingSystem.mowers[0].x).to eql(1)
 			expect(manualMowingSystem.mowers[0].y).to eql(3)
 			expect(manualMowingSystem.mowers[0].direction).to eql("N") 
@@ -357,8 +353,6 @@ describe LawnMowing::ManualMowingSystem do
 			manualMowingSystem = LawnMowing::ManualMowingSystem.init(array_lines)
 
 			manualMowingSystem.run_system
-			puts ""
-			manualMowingSystem.print_output
 			expect(manualMowingSystem.mowers[0].x).to eql(0)
 			expect(manualMowingSystem.mowers[0].y).to eql(5)
 			expect(manualMowingSystem.mowers[0].direction).to eql("N") 
@@ -381,8 +375,6 @@ describe LawnMowing::ManualMowingSystem do
 			manualMowingSystem = LawnMowing::ManualMowingSystem.init(array_lines)
 
 			manualMowingSystem.run_system
-			puts ""
-			manualMowingSystem.print_output
 			expect(manualMowingSystem.mowers[0].x).to eql(0)
 			expect(manualMowingSystem.mowers[0].y).to eql(3)
 			expect(manualMowingSystem.mowers[0].direction).to eql("N") 

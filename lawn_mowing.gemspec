@@ -5,18 +5,11 @@ require 'lawn_mowing/version'
 
 Gem::Specification.new do |spec|
 
-    spec.date        = '2006-03-05'
-    spec.summary     = "Lawn mowing"
-
- 
-
-    # spec.files       = ["lib/lawn_mowing.rb"]
-    # spec.homepage    = 'http://rubygems.org/gems/hello_anderson'
-
-
-
+  spec.date        = '2006-03-05'
+  spec.summary     = "Lawn mowing"
   spec.name          = "lawn_mowing"
-  spec.version       = LawnMowing::VERSION
+  # spec.version       = LawnMowing::VERSION
+   spec.version     = LawnMowing::VERSION.dup
   spec.authors     = ["Anderson Araujo Lopes"]
   spec.description = "Lawn mowing test"
   spec.date = Date.today

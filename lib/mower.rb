@@ -19,8 +19,11 @@ module LawnMowing
   		@initial_x = @x 
   		@initial_y = @y 
   		@initial_direction = @direction
-
   	end
+
+    def moves_string
+      self.moves.join("").chomp
+    end
 
 	  def print_position_direction
 	  	puts "#{@x} #{@y} #{@direction}"
