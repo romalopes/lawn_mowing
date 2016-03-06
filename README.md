@@ -72,6 +72,9 @@ Please advise me over the weekend once you have completed this.
 	      create  lawn_mowing/CODE_OF_CONDUCT.md
 	Initializing git repo in /Users/andersonlopes/Documents/GitHub/ruby/heyyou/lawn_mowing
 
+--downgrading bundler
+  gem uninstall bundler
+
 - $ rspec --init
   create   .rspec
   create   spec/spec_helper.rb
