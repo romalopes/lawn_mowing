@@ -1,5 +1,5 @@
 ### Lawn Mowing GEM
-2 - GEM reponsible for run the manual and automatic systems.  To run both systems the user has to cal a file which is located in bin directory.
+GEM reponsible for run the manual and automatic systems.  To run both systems the user has to cal a file which is located in bin directory.
     <p>GitHub<br>
       https://github.com/romalopes/lawn_mowing<br>
     Travis<br>
