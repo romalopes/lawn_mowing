@@ -9,7 +9,6 @@
     To run locally:
       $ git clone https://github.com/romalopes/lawn_mowing.git
       $ cd lawn_mowing
-      $ bundle install
 
     Testing:
       $ rspec spec
