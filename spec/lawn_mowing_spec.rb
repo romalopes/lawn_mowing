@@ -1,11 +1,6 @@
 require 'spec_helper'
 require 'lawn_mowing'
 
-
-describe "Roma" do
-  pending "write it"
-end
-
 describe LawnMowing::ManualMower do 
 	describe "creating and dealing with mower" do 
 		it "initialize" do
