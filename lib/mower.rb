@@ -7,7 +7,7 @@ class String
 end
 
 module LawnMowing
-  class Mower
+	class Mower
   	DIRECTIONS = ["S", "E", "N", "W"]
   	attr_accessor :index, :x, :y, :direction, :moves
 
@@ -109,7 +109,7 @@ module LawnMowing
 		  	self.number_tries = 0
 		  end
 	    return fail
-	  end
+		end
 
 	  def do_action(lawn_mowers_positions = [])
   		if current_movement == "M"
@@ -270,7 +270,7 @@ module LawnMowing
 	  	puts "index:#{@index} ->initial_x:#{@initial_x}  x:#{@x}, y:#{@y}, direction:#{@direction}, moves:#{@moves}"
 	  end
 
-	  def print_initial_position_direction
+		def print_initial_position_direction
 	  	puts "#{@initial_x} 0 N"
 		end
 	  def print_output
